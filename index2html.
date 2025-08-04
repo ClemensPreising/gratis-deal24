@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gratis Deal 24 – Probemonate & Testangebote</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #222;
+      --card: white;
+      --accent: #0070f3;
+    }
+    [data-theme="dark"] {
+      --bg: #111;
+      --text: #eee;
+      --card: #1c1c1c;
+      --accent: #0cf;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header, footer {
+      background: var(--text);
+      color: var(--bg);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header img {
+      height: 40px;
+    }
+    .toggle-btn {
+      cursor: pointer;
+      font-size: 0.9rem;
+      background: none;
+      border: 1px solid var(--bg);
+      color: var(--bg);
+      padding: 0.4rem 0.7rem;
+      border-radius: 5px;
+    }
+    h1 {
+      margin: 0.5rem 0;
+    }
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .controls {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
+    }
+    .controls input {
+      padding: 0.6rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      margin: 0.5rem 0 1rem;
+    }
+    .card a {
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .card a:hover {
+      background: #005ac1;
+    }
+    .notice {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="logo.png" alt="Gratis Deal 24 Logo" />
+  <button class="toggle-btn" onclick="toggleTheme()">Dark Mode</button>
+</header>
+
+<section class="hero">
+  <h1>Gratis-Deal24.de</h1>
+  <p>Teste Premium-Dienste kostenlos – ganz ohne Risiko!</p>
+</section>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Angebot suchen..." oninput="filterCards()" />
+</div>
+
+<section class="grid" id="cardGrid">
+  <!-- Cards werden hier eingefügt -->
+</section>
+
+<div class="notice">
+  <p>Einige Links auf dieser Seite sind Affiliate-Links. Beim Kauf entstehen dir keine Mehrkosten.</p>
+</div>
+
+<footer>
+  <p>© 2025 Gratis-Deal24.de</p>
+</footer>
+
+<script>
+  const cards = [
+    { name: "Amazon Prime", desc: "30 Tage kostenlos testen", link: "https://amzn.to/deinlink" },
+    { name: "Spotify", desc: "30 Tage werbefrei Musik streamen", link: "https://spotify.com/deinlink" },
+    { name: "Readly", desc: "1 Monat gratis Magazine & Zeitungen", link: "https://readly.com/deinlink" },
+    { name: "Audible", desc: "1 Hörbuch gratis – ohne Verpflichtung", link: "https://audible.de/deinlink" },
+    { name: "RTL+", desc: "30 Tage Serien, Musik & mehr", link: "https://rtlplus.de/deinlink" },
+    { name: "freenet Video", desc: "30 Tage Filme & Serien", link: "https://freenet.de/deinlink" },
+    { name: "NordVPN", desc: "30 Tage risikofrei mit Geld-zurück-Garantie", link: "https://nordvpn.com/deinlink" },
+    { name: "Adobe CC", desc: "7 Tage gratis Photoshop, etc.", link: "https://adobe.com/deinlink" },
+    { name: "Blinkist", desc: "7 Tage Sachbuch-Zusammenfassungen", link: "https://blinkist.com/deinlink" },
+    { name: "Waipu.tv", desc: "1 Monat kostenloses Live-TV", link: "https://waipu.tv/deinlink" }
+  ];
+
+  function renderCards() {
+    const grid = document.getElementById('cardGrid');
+    grid.innerHTML = '';
+    cards.forEach(c => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<h2>${c.name}</h2><p>${c.desc}</p><a href="${c.link}" target="_blank">Jetzt testen</a>`;
+      grid.appendChild(card);
+    });
+  }
+
+  function filterCards() {
+    const search = document.getElementById('search').value.toLowerCase();
+    const grid = document.getElementById('cardGrid');
+    grid.innerHTML = '';
+    cards.filter(c => c.name.toLowerCase().includes(search) || c.desc.toLowerCase().includes(search))
+      .forEach(c => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<h2>${c.name}</h2><p>${c.desc}</p><a href="${c.link}" target="_blank">Jetzt testen</a>`;
+        grid.appendChild(card);
+      });
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+  }
+
+  renderCards();
+</script>
+
+</body>
+</html>
