@@ -2,218 +2,218 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gratis Deal 24 – Deine besten Angebote</title>
-  <meta name="description" content="Kostenlose und top aktuelle Angebote, Gutscheine und Deals – Gratis Deal 24." />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gratis Deal 24 – Testangebote & Gutscheine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
   <style>
-    /* Reset */
-    *, *::before, *::after {
+    :root {
+      --bg: #f9f9f9;
+      --text: #222;
+      --card: white;
+      --accent: #36b37e;
+    }
+    [data-theme="dark"] {
+      --bg: #111;
+      --text: #eee;
+      --card: #1c1c1c;
+      --accent: #0cf;
+    }
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fafafa;
-      color: #222;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
-      transition: background 0.3s ease, color 0.3s ease;
     }
-
-    header {
-      background-color: #36b37e;
+    header, footer {
+      background: var(--accent);
+      color: white;
       padding: 1rem 2rem;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
       flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
     }
-
     .logo {
       display: flex;
       align-items: center;
       text-decoration: none;
       color: white;
-      font-weight: bold;
-      font-size: 1.25rem;
     }
-
     .logo img {
       height: 40px;
       margin-right: 10px;
     }
-
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
+      gap: 1rem;
     }
-
     nav ul li a {
       color: white;
       text-decoration: none;
-      font-weight: 600;
-      padding: 0.4rem 0.8rem;
+      font-weight: bold;
+      padding: 0.3rem 0.6rem;
       border-radius: 4px;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s;
     }
-
-    nav ul li a:hover,
-    nav ul li a:focus {
-      background-color: #2e8c5e;
-      outline: none;
+    nav ul li a:hover {
+      background: rgba(0, 0, 0, 0.2);
     }
-
+    .toggle-btn {
+      background: none;
+      border: 1px solid white;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
     main {
       max-width: 1200px;
       margin: 2rem auto;
-      padding: 0 1rem;
+      padding: 1rem;
     }
-
-    section {
-      margin-bottom: 2.5rem;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
-      padding: 1.5rem;
-    }
-
-    section h1, section h2 {
-      color: #36b37e;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #36b37e;
-      padding-bottom: 0.3rem;
-    }
-
-    section ul {
-      list-style: disc inside;
-      margin-top: 0.5rem;
-    }
-
-    article {
-      margin-bottom: 1rem;
-    }
-
-    article h3 a {
-      color: #222;
-      text-decoration: none;
-    }
-
-    article h3 a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      background-color: #eee;
-      padding: 1rem 2rem;
+    .hero {
       text-align: center;
-      font-size: 0.9rem;
-      color: #555;
+      margin-bottom: 2rem;
     }
-
-    footer a {
-      color: #36b37e;
+    .controls {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .controls input {
+      padding: 0.6rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .card h2 {
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      margin-bottom: 1rem;
+    }
+    .card a {
+      background: var(--accent);
+      color: white;
       text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      display: inline-block;
     }
-
-    footer a:hover {
-      text-decoration: underline;
+    .notice {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      text-align: center;
+      color: gray;
     }
-
-    /* Dark Mode Support */
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #1e1e1e;
-        color: #f0f0f0;
-      }
-      section {
-        background-color: #2b2b2b;
-      }
-      header {
-        background-color: #2e8c5e;
-      }
-      nav ul li a {
-        color: white;
-      }
-      footer {
-        background-color: #1a1a1a;
-        color: #bbb;
-      }
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        gap: 0.6rem;
-        align-items: center;
-      }
-      header {
-        justify-content: center;
-      }
+    footer {
+      text-align: center;
     }
   </style>
 </head>
-
 <body>
-
   <header>
-    <a href="/" class="logo" aria-label="Gratis Deal 24 Homepage">
-      <img src="https://via.placeholder.com/150x40?text=Logo" alt="Gratis Deal 24 Logo" />
-      Gratis Deal 24
+    <a href="/" class="logo">
+      <img src="logo.png" alt="Gratis Deal 24 Logo">
+      <span>Gratis Deal 24</span>
     </a>
-
-    <nav aria-label="Hauptnavigation">
+    <nav>
       <ul>
         <li><a href="/">Startseite</a></li>
-        <li><a href="/angebote">Angebote</a></li>
-        <li><a href="/aktionen">Aktionen</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/kontakt">Kontakt</a></li>
-        <li><a href="/admin" aria-label="Admin Login">Admin</a></li>
+        <li><a href="/angebote.html">Angebote</a></li>
+        <li><a href="/aktionen.html">Aktionen</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/kontakt.html">Kontakt</a></li>
+        <li><a href="/admin.html">Admin</a></li>
       </ul>
     </nav>
+    <button class="toggle-btn" onclick="toggleTheme()">Dark Mode</button>
   </header>
 
   <main>
-    <section>
+    <section class="hero">
       <h1>Willkommen bei Gratis Deal 24</h1>
-      <p>
-        Hier findest du die besten kostenlosen Angebote, Gutscheine und Aktionen, die du aktuell nutzen kannst.
-        Spare Geld mit den neuesten Deals und bleibe immer auf dem neuesten Stand!
-      </p>
+      <p>Teste Premium-Dienste kostenlos – ganz ohne Risiko!</p>
     </section>
 
-    <section>
-      <h2>Top Angebote</h2>
-      <ul>
-        <li><a href="/angebote/streaming-probeabo">Streaming Probeabo 30 Tage kostenlos</a></li>
-        <li><a href="/angebote/kostenlose-buecher">Kostenlose E-Books & Hörproben herunterladen</a></li>
-        <li><a href="/angebote/fitnessstudio-test">7 Tage kostenlos Fitnessstudio testen</a></li>
-      </ul>
-    </section>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Angebot suchen..." oninput="filterCards()" />
+    </div>
 
-    <section>
-      <h2>Neu im Blog</h2>
-      <article>
-        <h3><a href="/blog/10-tipps-um-billiger-zu-shoppen">10 Tipps, um billiger zu shoppen</a></h3>
-        <p>Erfahre, wie du beim Online-Shopping clever sparen kannst mit einfachen Tricks.</p>
-      </article>
-      <article>
-        <h3><a href="/blog/probeabonements-richtig-nutzen">Probeabonnements richtig nutzen</a></h3>
-        <p>Unsere Anleitung, wie du kostenlose Testphasen optimal ausnutzt, ohne Kostenfallen.</p>
-      </article>
-    </section>
+    <section class="grid" id="cardGrid"></section>
+
+    <div class="notice">
+      <p>Einige Links auf dieser Seite sind Affiliate-Links. Beim Kauf entstehen dir keine Mehrkosten.</p>
+    </div>
   </main>
 
   <footer>
-    &copy; 2025 Gratis Deal 24 – Alle Rechte vorbehalten |
-    <a href="/impressum">Impressum</a> |
-    <a href="/datenschutz">Datenschutz</a>
+    &copy; 2025 Gratis Deal 24 – Alle Rechte vorbehalten
   </footer>
 
+  <script>
+    const cards = [
+      { name: "Amazon Prime", desc: "30 Tage kostenlos testen", link: "https://www.amazon.de/amazonprime" },
+      { name: "Spotify", desc: "1 Monat kostenlos Musik streamen", link: "https://www.spotify.com/de/premium/" },
+      { name: "Readly", desc: "1 Monat gratis Magazine & Zeitungen", link: "https://de.readly.com" },
+      { name: "Audible", desc: "1 Hörbuch gratis testen", link: "https://www.audible.de/ep/30-Tage-kostenlos" },
+      { name: "RTL+", desc: "30 Tage Serien & Musik", link: "https://plus.rtl.de/" },
+      { name: "freenet Video", desc: "30 Tage kostenlos Filme & Serien", link: "https://video.freenet.de/" },
+      { name: "NordVPN", desc: "30 Tage Geld-zurück-Garantie", link: "https://nordvpn.com/de/" },
+      { name: "Adobe CC", desc: "7 Tage gratis testen", link: "https://www.adobe.com/de/creativecloud.html" },
+      { name: "Blinkist", desc: "7 Tage Sachbücher hören & lesen", link: "https://www.blinkist.com/de/nc/7tage" },
+      { name: "Waipu.tv", desc: "1 Monat kostenlos Live-TV", link: "https://www.waipu.tv/" }
+    ];
+
+    function renderCards() {
+      const grid = document.getElementById("cardGrid");
+      grid.innerHTML = "";
+      cards.forEach(c => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `<h2>${c.name}</h2><p>${c.desc}</p><a href="${c.link}" target="_blank">Jetzt testen</a>`;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterCards() {
+      const value = document.getElementById("search").value.toLowerCase();
+      const grid = document.getElementById("cardGrid");
+      grid.innerHTML = "";
+      cards.filter(c => c.name.toLowerCase().includes(value) || c.desc.toLowerCase().includes(value))
+        .forEach(c => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `<h2>${c.name}</h2><p>${c.desc}</p><a href="${c.link}" target="_blank">Jetzt testen</a>`;
+          grid.appendChild(card);
+        });
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+
+    renderCards();
+  </script>
 </body>
 </html>
